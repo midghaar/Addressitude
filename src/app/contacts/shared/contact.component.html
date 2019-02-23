@@ -1,0 +1,24 @@
+<a [routerLink]="['/contacts', contact.identifier]" class="contact">
+  <img [style.borderColor]="contact.color" [src]="contact.picture">
+  <div class="text">
+    <h2 class="name" [innerHtml]="contact.name | highlight:highlightText">{{contact.name}}</h2>
+    <p class="email">
+      <a [href]="'mailto:' + contact.email" (click)="$event.stopPropagation()">
+          <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+        <span [innerHtml]="contact.email | highlight:highlightText"></span>
+      </a>
+    </p>
+    <p class="phone">
+      <a [href]="'tel:' + contact.phone" (click)="$event.stopPropagation()">
+          <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+        <span [innerHtml]="contact.phone | highlight:highlightText"></span>
+      </a>
+    </p>
+    <p class="mobile">
+      <a [href]="'tel:' + contact.mobile" (click)="$event.stopPropagation()">
+        <fa-icon [icon]="['fas', 'mobile-alt']"></fa-icon>
+        <span [innerHtml]="contact.cell | highlight:highlightText"></span>
+      </a>
+    </p>
+  </div>
+</a>

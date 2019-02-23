@@ -1,0 +1,47 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.contacts li {
+    background-color: #212121;
+    margin: 10px;
+    border-radius: 100px;
+}
+
+ul.order-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.order-by li {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    background-color: #212121;
+    cursor: pointer;
+}
+
+ul.order-by li.active {
+    background-color: #c8ffc0;
+    color: #212121;
+}
+
+.search-field {
+    background-color: #212121;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.search-field input {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    width: 100%;
+    font-family: inherit;
+    padding: 10px 40px;
+    font-size: 20px;
+}

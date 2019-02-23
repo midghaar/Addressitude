@@ -11,6 +11,9 @@ const routes: Routes = [{
     component: ContactDetailComponent
 }];
 
+/**
+ * Routing module for the Contacts feature module.
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
