@@ -11,6 +11,9 @@ const routes: Routes = [
   }
 ];
 
+/**
+ * The root routing modules. Handles lazy loading of feature modules.
+ */
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

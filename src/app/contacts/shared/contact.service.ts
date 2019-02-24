@@ -23,7 +23,7 @@ export class ContactService {
      */
     private results = 30;
     /**
-     * A cache of fetched contacts between routes.
+     * A cache of fetched contacts to store between routes.
      */
     private cachedContacts: Array<ContactModel>;
 

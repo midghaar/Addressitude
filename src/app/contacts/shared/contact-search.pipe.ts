@@ -22,6 +22,11 @@ export class ContactSearchPipe implements PipeTransform {
     'street'
   ];
 
+  /**
+   * Performs a search in various fields of each item in the supplied array.
+   * @param value The `Array` of `ContactModel` to search in.
+   * @param args The string to search for.
+   */
   transform(value: Array<ContactModel>, args: string): any {
     if (!args) {
       return value;

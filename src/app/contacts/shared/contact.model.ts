@@ -20,7 +20,11 @@ export class ContactModel {
     public daysUntilBirthday: string;
     public color: string;
 
-    constructor(contact: any) {
+    constructor(contact?: any) {
+        if (!contact) {
+            return;
+        }
+
         this.gender = contact.gender;
         this.firstname = contact.name.first.charAt(0).toUpperCase() + contact.name.first.slice(1);
         this.lastname = contact.name.last.charAt(0).toUpperCase() + contact.name.last.slice(1);

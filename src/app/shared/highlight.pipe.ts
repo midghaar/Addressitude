@@ -11,7 +11,7 @@ export class HighlightPipe implements PipeTransform {
  * Performs the highlight transformation.
  * @param value The text in which a part should be highlighted.
  * @param args The text to highlight.
- * @returns a string where every occurance of `args` in `value` has been replaced with `<mark>args</mark>`.
+ * @returns A string where every occurance of `args` in `value` has been replaced with `<mark>args</mark>`.
  */
   transform(value: string, args: string): string {
     if (!args) {

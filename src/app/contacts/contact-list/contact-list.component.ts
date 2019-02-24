@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 /**
- * Component displaying a list of all contacts
+ * Component displaying a list of all contacts with search and sort functionality.
  */
 @Component({
   selector: 'app-contact-list',
@@ -29,12 +29,21 @@ export class ContactListComponent implements OnInit {
    * Search text used for filtering contacts.
    */
   public searchText = '';
+  /**
+   * Fields of `ContactModel` which can be ordered by.
+   */
   public orderByFields = [
     'name',
     'email',
     'city'
   ];
+  /**
+   * The field of `ContactModel` currently being ordered by.
+   */
   public orderByField = this.orderByFields[0];
+  /**
+   * Reverse the ordering.
+   */
   public orderByReverse = false;
 
   constructor(
@@ -51,6 +60,10 @@ export class ContactListComponent implements OnInit {
     this.getContacts();
   }
 
+  /**
+   * Sets a field to order by. If the supplied field is the one currently in use, the order is instead reversed.
+   * @param field The name of the field to order by.
+   */
   orderBy(field: string) {
     if (this.orderByField === field) {
       this.orderByReverse = !this.orderByReverse;
