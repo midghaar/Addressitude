@@ -8,6 +8,8 @@ Potential improvements:
 * Pagination/Management of data
 
 To run the project, simply run `ng serve --open`. The project is also hosted at `https://midghaar.github.io/Addressitude/`.
+
+To build and publish to GitHub Pages - run `ng build --prod --base-href https://midghaar.github.io/Addressitude/` and `ngh --dir=dist/Addressitude`
 ___
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
