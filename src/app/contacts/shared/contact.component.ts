@@ -22,12 +22,19 @@ export class ContactComponent implements OnInit {
    * The index of the contact, if displayed in a list.
    */
   @Input() index = 0;
-  public showText = false;
-  public fadeInText = false;
+  public showText = true;
+  public fadeInText = true;
 
   constructor() { }
 
   ngOnInit() {
+    if (this.contact.expanded) {
+      return;
+    }
+
+    this.showText = false;
+    this.fadeInText = false;
+
     setTimeout(() => {
       this.contact.expanded = true;
       setTimeout(() => {
