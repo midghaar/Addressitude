@@ -1,6 +1,13 @@
 # Addressitude
 
-Hello there.
+Potential improvements:
+
+* Accessibility
+* SEO
+* Translations
+* Pagination/Management of data
+
+To run the project, simply run `ng serve --open`. The project is also hosted at `https://midghaar.github.io/Addressitude/`.
 ___
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.

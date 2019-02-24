@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './route-reuse-strategy';
 
 /**
  * The root application module.
@@ -18,7 +20,10 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     CoreModule
   ],
-  providers: [],
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: CustomReuseStrategy
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

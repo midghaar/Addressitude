@@ -7,35 +7,37 @@
     <div class="flex">
       <h2>{{contact.firstname}} {{contact.lastname}}</h2>
       <div class="layout row column-lt-xs">
-        <div class="information">
+        <div class="flex information">
           <p class="email">
-            <a [href]="'mailto:' + contact.email" (click)="$event.stopPropagation()">
-              <span class="information-header"><fa-icon [icon]="['fas', 'envelope']"></fa-icon> Email</span>
+            <a [href]="'mailto:' + contact.email">
+              <span class="information-header"><fa-icon class="mail-icon" [icon]="['fas', 'envelope']"></fa-icon> Email</span>
               {{contact.email}}
             </a>
           </p>
           <p class="phone">
-            <a [href]="'tel:' + contact.phone" (click)="$event.stopPropagation()">
-              <span class="information-header"><fa-icon [icon]="['fas', 'phone']"></fa-icon> Phone</span>
+            <a [href]="'tel:' + contact.phone">
+              <span class="information-header"><fa-icon class="phone-icon" [icon]="['fas', 'phone']"></fa-icon> Phone</span>
               {{contact.phone}}
             </a>
           </p>
           <p class="mobile">
-            <a [href]="'tel:' + contact.cell" (click)="$event.stopPropagation()">
-              <span class="information-header"><fa-icon [icon]="['fas', 'mobile-alt']"></fa-icon> Cell</span>
+            <a [href]="'tel:' + contact.cell">
+              <span class="information-header"><fa-icon class="mobile-icon" [icon]="['fas', 'mobile-alt']"></fa-icon> Cell</span>
               {{contact.cell}}
             </a>
           </p>
           <p class="location">
-            <span class="information-header"><fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon> Address</span>
-            {{contact.street}} <br>
-            {{contact.postcode}} <br>
-            {{contact.city}} <br>
+            <a [href]="contact.mapUrl">
+              <span class="information-header"><fa-icon class="location-icon" [icon]="['fas', 'map-marker-alt']"></fa-icon> Address</span>
+              {{contact.street}} <br>
+              {{contact.postcode}} <br>
+              {{contact.city}} <br>
+            </a>
           </p>
         </div>
         <div class="flex">
           <p>
-            <span class="information-header"><fa-icon [icon]="['fas', 'question-circle']"></fa-icon> Did you know?</span>
+            <span class="information-header"><fa-icon class="question-icon" [icon]="['fas', 'question-circle']"></fa-icon> Did you know?</span>
             {{contact.firstname}}'s birthday is {{contact.daysUntilBirthday}} ({{contact.birthday}}) <br>
             {{contact.firstname}} has been an employee since {{contact.registered}}
           </p>

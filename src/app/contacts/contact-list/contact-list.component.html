@@ -3,7 +3,7 @@
     <input placeholder="Search contacts..." type="text" (keyup)="searchText$.next($event.target.value)"/>
   </div>
   <ul class="order-by">
-    <li *ngFor="let field of orderByFields" [ngClass]="{active: orderByField == field}" (click)="orderBy(field)">
+    <li *ngFor="let field of orderByFields" [ngClass]="{'active': orderByField == field}" (click)="orderBy(field)">
       {{field}}
       <fa-icon *ngIf="orderByField == field && orderByReverse" [icon]="['fas', 'sort-alpha-up']"></fa-icon>
       <fa-icon *ngIf="!(orderByField == field && orderByReverse)" [icon]="['fas', 'sort-alpha-down']"></fa-icon>
@@ -11,7 +11,8 @@
   </ul>
 </section>
 <ul class="contacts">
-  <li *ngFor="let contact of contacts$ | async | contactSearch:searchText | orderBy:orderByField:orderByReverse | slice:0:999 as contacts">
-    <app-contact [contact]="contact" [highlightText]="searchText"></app-contact>
+  <li *ngFor="let contact of contacts$ | async | contactSearch:searchText | orderBy:orderByField:orderByReverse as contacts; let i = index"
+    [ngClass]="{'minimized': !contact.expanded}">
+    <app-contact [contact]="contact" [index]="i" [highlightText]="searchText"></app-contact>
   </li>
 </ul>

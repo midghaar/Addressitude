@@ -1,30 +1,32 @@
-<a [routerLink]="['/contacts', contact.identifier]" class="contact">
+<a [routerLink]="['/contacts', contact.identifier]" class="contact" [ngClass]="{'minimized': !contact.expanded}">
   <img [style.backgroundColor]="contact.color" [style.borderColor]="contact.color" [src]="contact.picture">
-  <div class="text">
+  <div class="text" *ngIf="showText" [ngClass]="{'fade-in': fadeInText}">
     <h2 class="name" [innerHtml]="contact.name | highlight:highlightText">{{contact.name}}</h2>
     <div class="layout row column-lt-xs">
       <div class="flex">
         <p class="email">
           <a [href]="'mailto:' + contact.email" (click)="$event.stopPropagation()">
-              <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+              <fa-icon class="mail-icon" [icon]="['fas', 'envelope']"></fa-icon>
             <span [innerHtml]="contact.email | highlight:highlightText"></span>
           </a>
         </p>
         <p class="city">
-          <fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon>
-          <span [innerHtml]="contact.city | highlight:highlightText"></span>
+          <a [href]="contact.mapUrl" (click)="$event.stopPropagation()">
+            <fa-icon class="location-icon" [icon]="['fas', 'map-marker-alt']"></fa-icon>
+            <span [innerHtml]="contact.city | highlight:highlightText"></span>
+          </a>
         </p>
       </div>
       <div class="flex">
         <p class="phone">
           <a [href]="'tel:' + contact.phone" (click)="$event.stopPropagation()">
-              <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+              <fa-icon class="phone-icon" [icon]="['fas', 'phone']"></fa-icon>
             <span [innerHtml]="contact.phone | highlight:highlightText"></span>
           </a>
         </p>
         <p class="mobile">
           <a [href]="'tel:' + contact.cell" (click)="$event.stopPropagation()">
-            <fa-icon [icon]="['fas', 'mobile-alt']"></fa-icon>
+            <fa-icon class="mobile-icon" [icon]="['fas', 'mobile-alt']"></fa-icon>
             <span [innerHtml]="contact.cell | highlight:highlightText"></span>
           </a>
         </p>
