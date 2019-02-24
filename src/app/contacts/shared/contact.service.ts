@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ContactModel } from './contact.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 /**
  * Service for handling contact related HTTP requests using `HttpClient`.
@@ -20,13 +21,15 @@ export class ContactService {
     /**
      * The amount of contacts to load. Hardcoded for demonstration purposes. Should in reality load all, preferably paginated.
      */
-    private results = 100;
+    private results = 30;
     /**
-     * An observable to cache fetched contacts between routes.
+     * A cache of fetched contacts between routes.
      */
-    private cacheObs: Observable<Array<ContactModel>>;
+    private cachedContacts: Array<ContactModel>;
 
-    constructor(private httpClient: HttpClient) {
+    constructor(
+        private httpClient: HttpClient,
+        private ngxLoaderService: NgxUiLoaderService) {
     }
 
     /**
@@ -34,14 +37,18 @@ export class ContactService {
      * @return an `Observable` of an `Array` of `ContactModel`.
      */
     public getContacts(): Observable<Array<ContactModel>> {
-        if (this.cacheObs) {
-            return this.cacheObs;
+        if (this.cachedContacts) {
+            return new Observable<Array<ContactModel>>(subscriber => subscriber.next(this.cachedContacts));
         }
 
-        this.cacheObs = this.httpClient.get(`${this.apiUrl}?seed=${this.seed}&results=${this.results}&noinfo&nat=dk`).pipe(
-            map((response: any) => ContactModel.mapModels(response.results))
+        this.ngxLoaderService.start();
+        return this.httpClient.get(`${this.apiUrl}?seed=${this.seed}&results=${this.results}&noinfo&nat=dk`).pipe(
+            map((response: any) => {
+                this.cachedContacts = ContactModel.mapModels(response.results);
+                this.ngxLoaderService.stop();
+                return this.cachedContacts;
+            })
         );
-        return this.cacheObs;
     }
 
     /**

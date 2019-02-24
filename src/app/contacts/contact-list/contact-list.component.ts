@@ -2,7 +2,7 @@ import { ContactService } from './../shared/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { ContactModel } from '../shared/contact.model';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, throttleTime, debounce } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 /**
  * Component displaying a list of all contacts
@@ -10,7 +10,7 @@ import { debounceTime, distinctUntilChanged, switchMap, throttleTime, debounce }
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.css']
+  styleUrls: ['./contact-list.component.less']
 })
 export class ContactListComponent implements OnInit {
   /**
@@ -31,12 +31,15 @@ export class ContactListComponent implements OnInit {
   public searchText = '';
   public orderByFields = [
     'name',
+    'email',
     'city'
   ];
   public orderByField = this.orderByFields[0];
   public orderByReverse = false;
 
-  constructor(private contactService: ContactService) {
+  constructor(
+    private contactService: ContactService) {
+
     this.searchText$.pipe(
       debounceTime(this.searchTextDebounceTime),
       distinctUntilChanged()).subscribe(s => {

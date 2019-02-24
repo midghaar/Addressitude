@@ -1,0 +1,51 @@
+.contact {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+
+    fa-icon {
+        width: 26px;
+        padding-right: 10px;
+        display: inline-block;
+    }
+
+    h2, p {
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        word-break: break-word;
+    }
+
+    img {
+        margin-right: 20px;
+        border-radius: 50%;
+        border: 5px solid;
+        width: 110px;
+        height: 110px;
+    }
+
+    .text {
+        flex: 1;
+    }
+}
+
+@media all and (max-width: 960px) {
+    .contact {
+        align-items: flex-start;
+
+        h2 {
+            font-size: 16px;
+        }
+        p {
+            font-size: 14px;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-width: 3px;
+        }
+    }
+}

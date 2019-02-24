@@ -1,0 +1,85 @@
+@import "../../../styles.less";
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.contacts {
+    padding-top: 96px;
+
+    li {
+        background-color: @panel-bg;
+        margin: 10px;
+        border-radius: 100px;
+
+        &:hover {
+            background-color: @panel-bg-hover;
+        }
+    }
+}
+
+ul.order-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        margin: 0px 5px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        text-transform: capitalize;
+        background-color: @panel-bg;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: @panel-bg-hover;
+        }
+
+        &.active {
+            background-color: @highlight-bg;
+            color: @highlight-color;
+
+            &:hover {
+                background-color: @highlight-bg-hover;
+            }
+        }
+    }
+}
+
+.search-field {
+    background-color: @panel-bg;
+    margin: 10px;
+    border-radius: 24px;
+
+    &:hover {
+        background-color: @panel-bg-hover;
+    }
+
+    input {
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        width: 100%;
+        font-family: inherit;
+        padding: 12px 40px;
+        font-size: 20px;
+    }
+}
+
+.top-section {
+    position: fixed;
+    top: 0;
+    max-width: 100%;
+    width: 960px;
+    background-color: @bg;
+    padding-bottom: 10px;
+}
+@media all and (max-width: 960px) {
+    ul.contacts {
+        li {
+            border-radius: 50px;
+        }
+    }
+}

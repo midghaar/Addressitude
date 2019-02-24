@@ -1,3 +1,46 @@
-<div *ngIf="contact$ | async as contact">
-  <h3>{{contact.name}}</h3>
-</div>
+<section>
+  <a class="back-link" [routerLink]="['/contacts']">
+    <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
+  </a>
+  <div class="contact layout row column-lt-xs" *ngIf="contact$ | async as contact">
+    <img [style.backgroundColor]="contact.color" [style.borderColor]="contact.color" [src]="contact.picture" />
+    <div class="flex">
+      <h2>{{contact.firstname}} {{contact.lastname}}</h2>
+      <div class="layout row column-lt-xs">
+        <div class="information">
+          <p class="email">
+            <a [href]="'mailto:' + contact.email" (click)="$event.stopPropagation()">
+              <span class="information-header"><fa-icon [icon]="['fas', 'envelope']"></fa-icon> Email</span>
+              {{contact.email}}
+            </a>
+          </p>
+          <p class="phone">
+            <a [href]="'tel:' + contact.phone" (click)="$event.stopPropagation()">
+              <span class="information-header"><fa-icon [icon]="['fas', 'phone']"></fa-icon> Phone</span>
+              {{contact.phone}}
+            </a>
+          </p>
+          <p class="mobile">
+            <a [href]="'tel:' + contact.cell" (click)="$event.stopPropagation()">
+              <span class="information-header"><fa-icon [icon]="['fas', 'mobile-alt']"></fa-icon> Cell</span>
+              {{contact.cell}}
+            </a>
+          </p>
+          <p class="location">
+            <span class="information-header"><fa-icon [icon]="['fas', 'map-marker-alt']"></fa-icon> Address</span>
+            {{contact.street}} <br>
+            {{contact.postcode}} <br>
+            {{contact.city}} <br>
+          </p>
+        </div>
+        <div class="flex">
+          <p>
+            <span class="information-header"><fa-icon [icon]="['fas', 'question-circle']"></fa-icon> Did you know?</span>
+            {{contact.firstname}}'s birthday is {{contact.daysUntilBirthday}} ({{contact.birthday}}) <br>
+            {{contact.firstname}} has been an employee since {{contact.registered}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

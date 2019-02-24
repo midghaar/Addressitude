@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import (css) url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@bg: #141414;
+@panel-bg: #212121;
+@panel-bg-hover: #2d2d2d;
+@highlight-bg: #c8ffc0;
+@highlight-color: @panel-bg;
+@highlight-bg-hover: #defdda;
+
+html {
+    overflow: hidden;
+    height: 100%;   
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: @bg;
+    color: #ffffff;
+    margin: 0;
+    overflow: auto;
+    height: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+mark {
+    background-color: @highlight-bg;
+    color: @highlight-color;
+}
+
+.layout {
+    display: flex;
+    align-items: flex-start;
+
+    &.row {
+        flex-direction: row;
+    }
+
+    &.column {
+        flex-direction: column;
+    }
+}
+
+.flex {
+    flex: 1 1 auto;
+}
+
+@media all and (max-width: 736px) {
+    .layout.column-lt-xs {
+        flex-direction: column;
+    }
+}

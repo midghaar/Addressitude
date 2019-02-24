@@ -28,10 +28,10 @@ export class ContactSearchPipe implements PipeTransform {
     }
 
     const matches = [];
-
+    const regex = new RegExp(args, 'gi');
     value.forEach(v => {
       for (const field of this.searchFields) {
-        if (v[field].indexOf(args) > -1) {
+        if (regex.test(v[field])) {
           matches.push(v);
           break;
         }

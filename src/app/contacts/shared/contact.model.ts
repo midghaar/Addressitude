@@ -1,8 +1,11 @@
 import * as randomColor from 'randomcolor';
+import * as moment from 'moment';
 
 export class ContactModel {
     public gender: string;
-    public name: any;
+    public firstname: string;
+    public lastname: string;
+    public name: string;
     public street: string;
     public city: string;
     public state: string;
@@ -12,12 +15,16 @@ export class ContactModel {
     public phone: string;
     public cell: string;
     public picture: string;
+    public registered: string;
+    public birthday: string;
+    public daysUntilBirthday: string;
     public color: string;
 
     constructor(contact: any) {
         this.gender = contact.gender;
-        this.name = contact.name.first.charAt(0).toUpperCase() + contact.name.first.slice(1)
-            + ' ' + contact.name.last.charAt(0).toUpperCase() + contact.name.last.slice(1);
+        this.firstname = contact.name.first.charAt(0).toUpperCase() + contact.name.first.slice(1);
+        this.lastname = contact.name.last.charAt(0).toUpperCase() + contact.name.last.slice(1);
+        this.name = this.firstname + ' ' + this.lastname;
         this.street = contact.location.street;
         this.city = contact.location.city;
         this.state = contact.location.state;
@@ -27,6 +34,9 @@ export class ContactModel {
         this.phone = contact.phone;
         this.cell = contact.cell;
         this.picture = contact.picture.large;
+        this.birthday = moment(contact.dob.date).format('MMMM D');
+        this.daysUntilBirthday = moment(contact.dob.date).add(contact.dob.age + 1, 'years').fromNow();
+        this.registered = moment(contact.registered.date).format('YYYY-MM-DD');
         this.color = randomColor({ seed: this.identifier });
     }
 

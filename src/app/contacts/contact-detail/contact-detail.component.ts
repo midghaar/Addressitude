@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-contact-detail',
   templateUrl: './contact-detail.component.html',
-  styleUrls: ['./contact-detail.component.css']
+  styleUrls: ['./contact-detail.component.less']
 })
 export class ContactDetailComponent implements OnInit {
   public contact$: Observable<ContactModel>;
