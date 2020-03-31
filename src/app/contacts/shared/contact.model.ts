@@ -91,7 +91,7 @@ export class ContactModel {
         this.firstname = contact.name.first.charAt(0).toUpperCase() + contact.name.first.slice(1);
         this.lastname = contact.name.last.charAt(0).toUpperCase() + contact.name.last.slice(1);
         this.name = this.firstname + ' ' + this.lastname;
-        this.street = contact.location.street.charAt(0).toUpperCase() + contact.location.street.slice(1);
+        this.street = contact.location.street.name.charAt(0).toUpperCase() + contact.location.street.name.slice(1) + ' ' + contact.location.street.number;
         this.city = contact.location.city.charAt(0).toUpperCase() + contact.location.city.slice(1);
         this.state = contact.location.state.charAt(0).toUpperCase() + contact.location.state.slice(1);
         this.postcode = contact.location.postcode;
